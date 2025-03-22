@@ -26,43 +26,6 @@
             position: relative;
         }
 
-        /* Popup Styles */
-        .popup {
-            display: block;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(246, 241, 222, 0.84); /* 80% Transparent */
-            color: #000;
-            font-family: "Courier New", monospace;
-            font-weight: bold;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 80%;
-            max-width: 300px;
-            z-index: 10;
-        }
-
-        .popup button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            background-color: rgba(73, 125, 105, 0.8);
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            font-family: "Courier New", monospace;
-        }
-
-        .popup button:hover {
-            background-color: rgba(58, 102, 85, .6);
-        }
-
         /* Buttons */
         .button {
             background-color: rgba(233, 244, 222, 0.775); /* Light Greenish-White */
@@ -85,12 +48,6 @@
             background-color: rgba(200, 220, 200, 0.8);
         }
 
-        /* Disable buttons when popup is open */
-        .disabled {
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
         /* Small text for (Auto Download) - Centered */
         .small-text {
             font-size: 12px;
@@ -105,15 +62,6 @@
 </head>
 <body>
 
-    <!-- Credits Button -->
-    <button id="creditsBtn" class="button" onclick="showPopup()">Credits</button>
-
-    <!-- Popup that appears on load -->
-    <div id="popup" class="popup">
-        <p>Credits :-<br> Anansha Di 🫂, ChatGPT 🤡,<br> My Dumb Brain 😆.</p>
-        <button onclick="closePopup()">Close</button>
-    </div>
-
     <!-- Webpage Buttons -->
     <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">Scan In Webpage</button>
     
@@ -126,26 +74,6 @@
     <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">BTS</button>
 
     <script>
-        function showPopup() {
-            document.getElementById("popup").style.display = "block";
-            disableButtons(true);
-        }
-
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
-            disableButtons(false);
-            requestFullScreen(); // Go fullscreen when the popup is closed
-        }
-
-        function disableButtons(state) {
-            let buttons = document.querySelectorAll(".button");
-            buttons.forEach(button => {
-                if (button.id !== "creditsBtn") {
-                    button.classList.toggle("disabled", state);
-                }
-            });
-        }
-
         function downloadApp() {
             window.location.href = 'https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk//Aura%20Snap.apk';
         }
@@ -164,7 +92,9 @@
         }
 
         window.onload = function() {
-            showPopup();
+            setTimeout(() => {
+                requestFullScreen(); // Activate fullscreen automatically
+            }, 500); // Wait 0.5 sec to ensure the page loads properly
         };
     </script>
 
