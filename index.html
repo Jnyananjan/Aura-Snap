@@ -28,12 +28,12 @@
 
         /* Popup Styles */
         .popup {
-            display: block; /* Show popup on load */
+            display: block;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #F6F1DE;
+            background: rgba(246, 241, 222, 0.84); /* 80% Transparent */
             color: #000;
             font-family: "Courier New", monospace;
             font-weight: bold;
@@ -43,14 +43,14 @@
             text-align: center;
             width: 80%;
             max-width: 300px;
-            z-index: 10; /* Ensure popup is above all elements */
+            z-index: 10;
         }
 
         .popup button {
             margin-top: 10px;
             padding: 10px 20px;
             border: none;
-            background-color: rgba(73, 125, 105, 0.5);
+            background-color: rgba(73, 125, 105, 0.8);
             color: white;
             cursor: pointer;
             border-radius: 5px;
@@ -60,13 +60,13 @@
         }
 
         .popup button:hover {
-            background-color: rgba(58, 102, 85, 0.7);
+            background-color: rgba(58, 102, 85, .6);
         }
 
         /* Buttons */
         .button {
-            background-color: rgba(73, 125, 105, 0.5);
-            color: white;
+            background-color: rgba(233, 244, 222, 0.775); /* Light Greenish-White */
+            color: #0D4715; /* Dark Green */
             padding: 15px 30px;
             margin: 10px;
             border: none;
@@ -78,11 +78,11 @@
             font-family: "Courier New", monospace;
             text-align: center;
             position: relative;
-            z-index: 1; /* Keep buttons behind the popup */
+            z-index: 1;
         }
 
         .button:hover {
-            background-color: rgba(58, 102, 85, 0.7);
+            background-color: rgba(200, 220, 200, 0.8);
         }
 
         /* Disable buttons when popup is open */
@@ -99,42 +99,13 @@
             display: block;
             text-align: center;
             margin-top: 5px;
-            z-index: 0; /* Initially behind popup */
+            z-index: 0;
         }
-
-        /* Shake effect for popup */
-        @keyframes shake {
-            0% { transform: translate(-50%, -50%) translateX(0); }
-            25% { transform: translate(-50%, -50%) translateX(-5px); }
-            50% { transform: translate(-50%, -50%) translateX(5px); }
-            75% { transform: translate(-50%, -50%) translateX(-5px); }
-            100% { transform: translate(-50%, -50%) translateX(0); }
-        }
-
-        .shake {
-            animation: shake 0.3s ease-in-out;
-        }
-
-        /* Overlay to catch clicks outside the popup */
-        .overlay {
-            display: block; /* Show on load */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-            z-index: 9; /* Below popup but above buttons */
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Overlay (Covers entire screen) -->
-    <div id="overlay" class="overlay" onclick="shakePopup()"></div>
-
-    <!-- Credits Button (Above Other Buttons) -->
+    <!-- Credits Button -->
     <button id="creditsBtn" class="button" onclick="showPopup()">Credits</button>
 
     <!-- Popup that appears on load -->
@@ -146,7 +117,7 @@
     <!-- Webpage Buttons -->
     <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">Visit Webpage</button>
     
-    <!-- Download Button with Auto Download (Centered Text) -->
+    <!-- Download Button -->
     <button class="button" onclick="downloadApp()">
         Download The App
         <span id="autoText" class="small-text">(Auto Download)</span>
@@ -157,35 +128,20 @@
     <script>
         function showPopup() {
             document.getElementById("popup").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-            document.getElementById("autoText").style.zIndex = "0"; // Hide behind popup
             disableButtons(true);
         }
 
         function closePopup() {
             document.getElementById("popup").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-            document.getElementById("autoText").style.zIndex = "1"; // Make visible again
             disableButtons(false);
-        }
-
-        function shakePopup() {
-            let popup = document.getElementById("popup");
-            popup.classList.add("shake");
-            setTimeout(() => {
-                popup.classList.remove("shake");
-            }, 300);
+            requestFullScreen(); // Go fullscreen when the popup is closed
         }
 
         function disableButtons(state) {
             let buttons = document.querySelectorAll(".button");
             buttons.forEach(button => {
-                if (button.id !== "creditsBtn") { // Keep Credits button enabled
-                    if (state) {
-                        button.classList.add("disabled");
-                    } else {
-                        button.classList.remove("disabled");
-                    }
+                if (button.id !== "creditsBtn") {
+                    button.classList.toggle("disabled", state);
                 }
             });
         }
@@ -194,7 +150,19 @@
             window.location.href = 'https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk//Aura%20Snap.apk';
         }
 
-        // Auto-download when page loads
+        function requestFullScreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
         window.onload = function() {
             showPopup();
         };
