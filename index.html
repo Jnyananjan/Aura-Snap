@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Gift</title>
+    <title>Custom Webpage</title>
     <style>
         * {
             margin: 0;
@@ -12,45 +12,22 @@
         }
         
         body {
-            background: url('https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/ar-content//bg.jpg') no-repeat center center/cover;
+            background: url('YOUR_SUPABASE_IMAGE_URL') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-        }
-        
-        h1 {
-            font-family: 'Didot', serif;
-            font-size: 2.8em;
+            font-family: "Courier New", monospace;
             font-weight: bold;
-            color: #F6F1DE;
+            color: white;
         }
 
-        .scan-btn {
-            display: inline-block;
-            margin-top: 450px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-family: 'Didot', serif;
-            font-weight: bold;
-            color: #F6F1DE;
-            background: #7e9286;
-            border: none;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: 0.3s;
-            pointer-events: none; /* Initially disable button */
-            opacity: 0.5; /* Reduce opacity to indicate it's disabled */
-        }
-
-        .scan-btn:hover {
-            background: #7e9286;
-            color: #fff;
-        }
-        
+        /* Popup Styles */
         .popup {
-            display: none;
+            display: block; /* Show popup on load */
             position: fixed;
             top: 50%;
             left: 50%;
@@ -58,6 +35,7 @@
             background: #F6F1DE;
             color: #000;
             font-family: "Courier New", monospace;
+            font-weight: bold;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -65,92 +43,94 @@
             width: 80%;
             max-width: 300px;
         }
-        
-        .credits-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background: #F6F1DE;
-            color: #000;
-            font-family: "Courier New", monospace;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
 
         .popup button {
             margin-top: 10px;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border: none;
-            background: #000;
-            color: #F6F1DE;
-            font-family: "Courier New", monospace;
+            background-color: rgba(73, 125, 105, 0.5);
+            color: white;
             cursor: pointer;
             border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Courier New", monospace;
         }
 
         .popup button:hover {
-            background: #333;
+            background-color: rgba(58, 102, 85, 0.7);
         }
 
-        /* Shake effect */
-        @keyframes shake {
-            0% { transform: translate(-50%, -50%) translateX(0); }
-            25% { transform: translate(-50%, -50%) translateX(-10px); }
-            50% { transform: translate(-50%, -50%) translateX(10px); }
-            75% { transform: translate(-50%, -50%) translateX(-10px); }
-            100% { transform: translate(-50%, -50%) translateX(0); }
+        /* Buttons */
+        .button {
+            background-color: rgba(73, 125, 105, 0.5);
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+            font-family: "Courier New", monospace;
+            text-align: center;
         }
 
-        .popup.shake {
-            animation: shake 0.3s ease-in-out;
+        .button:hover {
+            background-color: rgba(58, 102, 85, 0.7);
         }
+
+        /* Small text for (Auto Download) */
+        .small-text {
+            font-size: 12px;
+            font-weight: normal;
+            display: block;
+            opacity: 0.8;
+        }
+
     </style>
-    
 </head>
 <body>
-    
-    <button class="credits-button" onclick="showPopup()">Credits</button>
-    <div>
-        <h1>A small gift from Jana 😁🫂</h1>
-        <a href="scan.html" class="scan-btn">Scan Now</a>
-    </div>
-    
+
+    <!-- Credits Button (Above Other Buttons) -->
+    <button class="button" onclick="showPopup()">Credits</button>
+
+    <!-- Popup that appears on load -->
     <div id="popup" class="popup">
         <p>Credits :-<br> Anansha Di 🫂, ChatGPT 🤡,<br> My Dumb Brain 😆.</p>
         <button onclick="closePopup()">Close</button>
     </div>
 
+    <!-- Webpage Buttons -->
+    <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">Visit Webpage</button>
+    
+    <!-- Download Button with Auto Download -->
+    <button class="button" onclick="downloadApp()">
+        Download The App
+        <span class="small-text">(Auto Download)</span>
+    </button>
+
+    <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">BTS</button>
+
     <script>
         function showPopup() {
             document.getElementById("popup").style.display = "block";
-            document.querySelector(".scan-btn").style.pointerEvents = "none"; // Disable button
-            document.querySelector(".scan-btn").style.opacity = "0.5"; // Reduce opacity
         }
 
         function closePopup() {
             document.getElementById("popup").style.display = "none";
-            document.querySelector(".scan-btn").style.pointerEvents = "auto"; // Enable button
-            document.querySelector(".scan-btn").style.opacity = "1"; // Restore opacity
         }
 
-        // Show credits popup every time the page loads
+        function downloadApp() {
+            window.location.href = 'https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk//Aura%20Snap.apk';
+        }
+
+        // Auto-download when page loads
         window.onload = function() {
             showPopup();
         };
-
-        // Detect clicks outside the popup
-        document.addEventListener("click", function(event) {
-            let popup = document.getElementById("popup");
-            let isPopupClicked = popup.contains(event.target);
-
-            if (popup.style.display === "block" && !isPopupClicked) {
-                popup.classList.add("shake");
-                setTimeout(() => popup.classList.remove("shake"), 300); // Remove class after animation
-            }
-        });
     </script>
-    
+
 </body>
 </html>
