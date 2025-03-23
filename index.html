@@ -20,10 +20,27 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-family: "Courier New", monospace;
+            font-family: "Didot", serif; /* Updated font for text */
             font-weight: bold;
             color: white;
             position: relative;
+        }
+
+        /* Title with copied text style */
+        .title {
+            font-size: 38px; /* Keeping previous size */
+            font-weight: bold;
+            color: #FDF6EC; /* Soft cream color */
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); /* Glow effect */
+            margin-bottom: 100px; /* 2.5cm gap */
+            font-family: "Didot", serif;
+            line-height: 1.2; /* Adjusted spacing */
+        }
+
+        .emoji {
+            font-size: 38px; /* Keeping emoji size */
+            display: block; /* Ensures it appears on the next line */
+            margin-top: 5px; /* Small spacing for better alignment */
         }
 
         /* Buttons */
@@ -38,7 +55,7 @@
             border-radius: 5px;
             transition: 0.3s;
             font-weight: bold;
-            font-family: "Courier New", monospace;
+            font-family: "Poppins", sans-serif; /* Keeping button font as Poppins */
             text-align: center;
             position: relative;
             z-index: 1;
@@ -57,10 +74,17 @@
             text-align: center;
             margin-top: 5px;
             z-index: 0;
+            font-family: "Didot", serif; /* Ensuring small text also uses Didot */
         }
     </style>
 </head>
 <body>
+
+    <!-- Title with copied text effect -->
+    <div class="title">
+        A small gift from Jana <br>
+        <span class="emoji">😁🫂❤️‍🩹</span>
+    </div>
 
     <!-- Webpage Buttons -->
     <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">Scan In Webpage</button>
