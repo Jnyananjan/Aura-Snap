@@ -65,16 +65,16 @@
             background-color: rgba(200, 220, 200, 0.8);
         }
 
-        /* Small text for (Auto Download) - Centered */
-        .small-text {
+        /* Small text for (Click to Download) */
+        .small-text, .lag-text {
             font-size: 12px;
             font-weight: normal;
             opacity: 0.8;
             display: block;
             text-align: center;
             margin-top: 5px;
-            z-index: 0;
-            font-family: "Didot", serif; /* Ensuring small text also uses Didot */
+            font-family: "Didot", serif;
+            color: #0D4715; /* Deep Green */
         }
     </style>
 </head>
@@ -92,7 +92,8 @@
     <!-- Download Button -->
     <button class="button" onclick="downloadApp()">
         Scan In App
-        <span id="autoText" class="small-text">(Click To Download)</span>
+        <span class="small-text">(Click To Download)</span>
+        <span class="lag-text">It's a little bit laggy😭</span> <!-- Updated Text Here -->
     </button>
 
     <button class="button" onclick="window.location.href='page.html'">More Images</button>
