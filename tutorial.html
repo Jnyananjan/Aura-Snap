@@ -12,7 +12,7 @@
         }
         
         body {
-            background: url('https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk//Background.jpg') no-repeat center center fixed;
+            background: url('https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk//Bbg.jpg') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -23,7 +23,7 @@
             font-family: "Didot", serif;
             font-weight: bold;
             color: white;
-            position: relative;
+            padding: 30px 0;
         }
 
         .title {
@@ -31,16 +31,26 @@
             font-weight: bold;
             color: #FDF6EC;
             text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
-            margin-bottom: 20px;
             font-family: "Didot", serif;
             line-height: 1.2;
+            margin-bottom: 10px; /* Adjusted to move text up */
+        }
+
+        .video-container {
+            flex-grow: 1; /* Allows video to fill available space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-height: 70vh; /* Ensures it doesn't exceed available space */
         }
 
         video {
-            width: 80%;
-            max-width: 800px;
+            width: auto;
+            height: 100%; /* Keeps aspect ratio while scaling */
+            max-height: 65vh; /* Ensures it fits between title and button */
+            aspect-ratio: 9 / 16;
             border-radius: 10px;
-            margin-top: 20px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -48,7 +58,7 @@
             background-color: rgba(233, 244, 222, 0.775);
             color: #0D4715;
             padding: 15px 30px;
-            margin: 10px;
+            margin-top: 10px; /* Ensures proper spacing */
             border: none;
             cursor: pointer;
             font-size: 18px;
@@ -64,20 +74,33 @@
         .button:hover {
             background-color: rgba(200, 220, 200, 0.8);
         }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 90vh; /* Adjusted to fit everything perfectly */
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
-    <div class="title">
-        How to Use Scan Images
+    <div class="content-wrapper">
+        <div class="title">
+            How to Scan Images 
+        </div>
+
+        <div class="video-container">
+            <video controls>
+                <source src="https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk/tutorial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <button class="button" onclick="window.location.href='index.html'">Back to Home</button>
     </div>
-
-    <video controls>
-        <source src="https://dhkyzhpqoreeytuyeioj.supabase.co/storage/v1/object/public/apk/tutorial.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <button class="button" onclick="window.location.href='index.html'">Back to Home</button>
 
 </body>
 </html>
