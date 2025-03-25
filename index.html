@@ -20,33 +20,31 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-family: "Didot", serif; /* Updated font for text */
+            font-family: "Didot", serif;
             font-weight: bold;
             color: white;
             position: relative;
         }
 
-        /* Title with copied text style */
         .title {
-            font-size: 38px; /* Keeping previous size */
+            font-size: 38px;
             font-weight: bold;
-            color: #FDF6EC; /* Soft cream color */
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); /* Glow effect */
-            margin-bottom: 100px; /* 2.5cm gap */
+            color: #FDF6EC;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            margin-bottom: 100px;
             font-family: "Didot", serif;
-            line-height: 1.2; /* Adjusted spacing */
+            line-height: 1.2;
         }
 
         .emoji {
-            font-size: 38px; /* Keeping emoji size */
-            display: block; /* Ensures it appears on the next line */
-            margin-top: 5px; /* Small spacing for better alignment */
+            font-size: 38px;
+            display: block;
+            margin-top: 5px;
         }
 
-        /* Buttons */
         .button {
-            background-color: rgba(233, 244, 222, 0.775); /* Light Greenish-White */
-            color: #0D4715; /* Dark Green */
+            background-color: rgba(233, 244, 222, 0.775);
+            color: #0D4715;
             padding: 15px 30px;
             margin: 10px;
             border: none;
@@ -55,7 +53,7 @@
             border-radius: 5px;
             transition: 0.3s;
             font-weight: bold;
-            font-family: "Poppins", sans-serif; /* Keeping button font as Poppins */
+            font-family: "Poppins", sans-serif;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -65,7 +63,6 @@
             background-color: rgba(200, 220, 200, 0.8);
         }
 
-        /* Small text for (Click to Download) */
         .small-text, .lag-text {
             font-size: 12px;
             font-weight: normal;
@@ -74,29 +71,28 @@
             text-align: center;
             margin-top: 5px;
             font-family: "Didot", serif;
-            color: #0D4715; /* Deep Green */
+            color: #0D4715;
         }
     </style>
 </head>
 <body>
 
-    <!-- Title with copied text effect -->
     <div class="title">
         A small gift from Jana <br>
         <span class="emoji">😁🫂❤️‍🩹</span>
     </div>
 
-    <!-- Webpage Buttons -->
     <button class="button" onclick="window.location.href='https://jnyananjan.github.io/small-gift/'">Scan In Webpage</button>
     
-    <!-- Download Button -->
     <button class="button" onclick="downloadApp()">
         Scan In App
         <span class="small-text">(Click To Download)</span>
-        <span class="lag-text">It's a little bit laggy😭</span> <!-- Updated Text Here -->
+        <span class="lag-text">It's a little bit laggy😭</span>
     </button>
 
     <button class="button" onclick="window.location.href='page.html'">More Images</button>
+
+    <button class="button" onclick="window.location.href='tutorial.html'">Tutorial</button>
 
     <script>
         function downloadApp() {
@@ -107,19 +103,19 @@
             let elem = document.documentElement;
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { // Firefox
+            } else if (elem.mozRequestFullScreen) {
                 elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+            } else if (elem.webkitRequestFullscreen) {
                 elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { // IE/Edge
+            } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
             }
         }
 
         window.onload = function() {
             setTimeout(() => {
-                requestFullScreen(); // Activate fullscreen automatically
-            }, 500); // Wait 0.5 sec to ensure the page loads properly
+                requestFullScreen();
+            }, 500);
         };
     </script>
 
